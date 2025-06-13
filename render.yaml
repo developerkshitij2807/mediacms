@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mediacms
+    env: python
+    buildCommand: "./render-build.sh"
+    startCommand: "gunicorn mediacms.wsgi:application"
+    envVars:
+      - key: postgresql://postgres:kshitij-sb.mediacms@db.drfqdpabmpdhfhoxleml.supabase.co:5432/postgres
+        sync: false
+      - key: redis://default:AaUpAAIjcDFkMDE3OGYzMGIxYzg0Yjg1YjZkYjQ1YWU2YmY5Zjk4Y3AxMA@knowing-puma-42281.upstash.io:6379
+        sync: false
+      - key: kshitij_dutt_mediacms_django
+        generateValue: true
+      - key: DEBUG
+        value: "False"
